@@ -1,0 +1,409 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> exprStart
+Rule 1     exprStart -> expr SEMI
+Rule 2     exprStart -> expr LB ID EQ expr RB SEMI
+Rule 3     exprStart -> FV LB expr RB SEMI
+Rule 4     exprStart -> ALPH LB expr COMA ID RB SEMI
+Rule 5     expr -> NUM
+Rule 6     expr -> ID
+Rule 7     expr -> LP expr expr RP
+Rule 8     expr -> LP OP expr expr RP
+Rule 9     expr -> LP LAM ID expr RP
+
+Terminals, with rules where they appear
+
+ALPH                 : 4
+COMA                 : 4
+EQ                   : 2
+FV                   : 3
+ID                   : 2 4 6 9
+LAM                  : 9
+LB                   : 2 3 4
+LP                   : 7 8 9
+NUM                  : 5
+OP                   : 8
+RB                   : 2 3 4
+RP                   : 7 8 9
+SEMI                 : 1 2 3 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 2 2 3 4 7 7 8 8 9
+exprStart            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . exprStart
+    (1) exprStart -> . expr SEMI
+    (2) exprStart -> . expr LB ID EQ expr RB SEMI
+    (3) exprStart -> . FV LB expr RB SEMI
+    (4) exprStart -> . ALPH LB expr COMA ID RB SEMI
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    FV              shift and go to state 4
+    ALPH            shift and go to state 5
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    exprStart                      shift and go to state 1
+    expr                           shift and go to state 2
+
+state 1
+
+    (0) S' -> exprStart .
+
+
+
+state 2
+
+    (1) exprStart -> expr . SEMI
+    (2) exprStart -> expr . LB ID EQ expr RB SEMI
+
+    SEMI            shift and go to state 8
+    LB              shift and go to state 9
+
+
+state 3
+
+    (6) expr -> ID .
+
+    SEMI            reduce using rule 6 (expr -> ID .)
+    LB              reduce using rule 6 (expr -> ID .)
+    NUM             reduce using rule 6 (expr -> ID .)
+    ID              reduce using rule 6 (expr -> ID .)
+    LP              reduce using rule 6 (expr -> ID .)
+    RB              reduce using rule 6 (expr -> ID .)
+    COMA            reduce using rule 6 (expr -> ID .)
+    RP              reduce using rule 6 (expr -> ID .)
+
+
+state 4
+
+    (3) exprStart -> FV . LB expr RB SEMI
+
+    LB              shift and go to state 10
+
+
+state 5
+
+    (4) exprStart -> ALPH . LB expr COMA ID RB SEMI
+
+    LB              shift and go to state 11
+
+
+state 6
+
+    (5) expr -> NUM .
+
+    SEMI            reduce using rule 5 (expr -> NUM .)
+    LB              reduce using rule 5 (expr -> NUM .)
+    NUM             reduce using rule 5 (expr -> NUM .)
+    ID              reduce using rule 5 (expr -> NUM .)
+    LP              reduce using rule 5 (expr -> NUM .)
+    RB              reduce using rule 5 (expr -> NUM .)
+    COMA            reduce using rule 5 (expr -> NUM .)
+    RP              reduce using rule 5 (expr -> NUM .)
+
+
+state 7
+
+    (7) expr -> LP . expr expr RP
+    (8) expr -> LP . OP expr expr RP
+    (9) expr -> LP . LAM ID expr RP
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    OP              shift and go to state 13
+    LAM             shift and go to state 14
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 12
+
+state 8
+
+    (1) exprStart -> expr SEMI .
+
+    $end            reduce using rule 1 (exprStart -> expr SEMI .)
+
+
+state 9
+
+    (2) exprStart -> expr LB . ID EQ expr RB SEMI
+
+    ID              shift and go to state 15
+
+
+state 10
+
+    (3) exprStart -> FV LB . expr RB SEMI
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 16
+
+state 11
+
+    (4) exprStart -> ALPH LB . expr COMA ID RB SEMI
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 17
+
+state 12
+
+    (7) expr -> LP expr . expr RP
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 18
+
+state 13
+
+    (8) expr -> LP OP . expr expr RP
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 19
+
+state 14
+
+    (9) expr -> LP LAM . ID expr RP
+
+    ID              shift and go to state 20
+
+
+state 15
+
+    (2) exprStart -> expr LB ID . EQ expr RB SEMI
+
+    EQ              shift and go to state 21
+
+
+state 16
+
+    (3) exprStart -> FV LB expr . RB SEMI
+
+    RB              shift and go to state 22
+
+
+state 17
+
+    (4) exprStart -> ALPH LB expr . COMA ID RB SEMI
+
+    COMA            shift and go to state 23
+
+
+state 18
+
+    (7) expr -> LP expr expr . RP
+
+    RP              shift and go to state 24
+
+
+state 19
+
+    (8) expr -> LP OP expr . expr RP
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 25
+
+state 20
+
+    (9) expr -> LP LAM ID . expr RP
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 26
+
+state 21
+
+    (2) exprStart -> expr LB ID EQ . expr RB SEMI
+    (5) expr -> . NUM
+    (6) expr -> . ID
+    (7) expr -> . LP expr expr RP
+    (8) expr -> . LP OP expr expr RP
+    (9) expr -> . LP LAM ID expr RP
+
+    NUM             shift and go to state 6
+    ID              shift and go to state 3
+    LP              shift and go to state 7
+
+    expr                           shift and go to state 27
+
+state 22
+
+    (3) exprStart -> FV LB expr RB . SEMI
+
+    SEMI            shift and go to state 28
+
+
+state 23
+
+    (4) exprStart -> ALPH LB expr COMA . ID RB SEMI
+
+    ID              shift and go to state 29
+
+
+state 24
+
+    (7) expr -> LP expr expr RP .
+
+    SEMI            reduce using rule 7 (expr -> LP expr expr RP .)
+    LB              reduce using rule 7 (expr -> LP expr expr RP .)
+    NUM             reduce using rule 7 (expr -> LP expr expr RP .)
+    ID              reduce using rule 7 (expr -> LP expr expr RP .)
+    LP              reduce using rule 7 (expr -> LP expr expr RP .)
+    RB              reduce using rule 7 (expr -> LP expr expr RP .)
+    COMA            reduce using rule 7 (expr -> LP expr expr RP .)
+    RP              reduce using rule 7 (expr -> LP expr expr RP .)
+
+
+state 25
+
+    (8) expr -> LP OP expr expr . RP
+
+    RP              shift and go to state 30
+
+
+state 26
+
+    (9) expr -> LP LAM ID expr . RP
+
+    RP              shift and go to state 31
+
+
+state 27
+
+    (2) exprStart -> expr LB ID EQ expr . RB SEMI
+
+    RB              shift and go to state 32
+
+
+state 28
+
+    (3) exprStart -> FV LB expr RB SEMI .
+
+    $end            reduce using rule 3 (exprStart -> FV LB expr RB SEMI .)
+
+
+state 29
+
+    (4) exprStart -> ALPH LB expr COMA ID . RB SEMI
+
+    RB              shift and go to state 33
+
+
+state 30
+
+    (8) expr -> LP OP expr expr RP .
+
+    SEMI            reduce using rule 8 (expr -> LP OP expr expr RP .)
+    LB              reduce using rule 8 (expr -> LP OP expr expr RP .)
+    NUM             reduce using rule 8 (expr -> LP OP expr expr RP .)
+    ID              reduce using rule 8 (expr -> LP OP expr expr RP .)
+    LP              reduce using rule 8 (expr -> LP OP expr expr RP .)
+    RB              reduce using rule 8 (expr -> LP OP expr expr RP .)
+    COMA            reduce using rule 8 (expr -> LP OP expr expr RP .)
+    RP              reduce using rule 8 (expr -> LP OP expr expr RP .)
+
+
+state 31
+
+    (9) expr -> LP LAM ID expr RP .
+
+    SEMI            reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    LB              reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    NUM             reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    ID              reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    LP              reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    RB              reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    COMA            reduce using rule 9 (expr -> LP LAM ID expr RP .)
+    RP              reduce using rule 9 (expr -> LP LAM ID expr RP .)
+
+
+state 32
+
+    (2) exprStart -> expr LB ID EQ expr RB . SEMI
+
+    SEMI            shift and go to state 34
+
+
+state 33
+
+    (4) exprStart -> ALPH LB expr COMA ID RB . SEMI
+
+    SEMI            shift and go to state 35
+
+
+state 34
+
+    (2) exprStart -> expr LB ID EQ expr RB SEMI .
+
+    $end            reduce using rule 2 (exprStart -> expr LB ID EQ expr RB SEMI .)
+
+
+state 35
+
+    (4) exprStart -> ALPH LB expr COMA ID RB SEMI .
+
+    $end            reduce using rule 4 (exprStart -> ALPH LB expr COMA ID RB SEMI .)
+

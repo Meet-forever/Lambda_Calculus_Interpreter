@@ -1,0 +1,3 @@
+((lambda y((lambda a(- a y)) (/ y y))) 2);
+(((lambda k(lambda y (y k))) 2)(lambda a (+ a a)));
+(/ 2 0);
