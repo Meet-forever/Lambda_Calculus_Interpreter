@@ -1,5 +1,5 @@
 # Lambda Calculus Interpreter
-Project Idea and instruction taken from: [PLC-Lambda-Calculus-Project](https://tinman.cs.gsu.edu/~raj/4330/sp22/honors-grad-project/)
+Project idea and instruction taken from: [PLC-Lambda-Calculus-Project](https://tinman.cs.gsu.edu/~raj/4330/sp22/honors-grad-project/)
 
 <blockquote>"Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution." -- Wikipedia </blockquote> 
 
