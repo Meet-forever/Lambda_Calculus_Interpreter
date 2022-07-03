@@ -5,14 +5,23 @@ Project idea and instruction taken from: [PLC-Lambda-Calculus-Project](https://t
 
 This project converts the theoretical idea of lambda calculus into a programming language. The main aim of this program is to apply beta reductions on a lambda expression to reduce its form.  
 
-### Optional Flags:
+## Optional Flags:
 ```
 -steps (prints steps of solving)
--tree (prints expression tree)
+-tree (prints AST)
 Both can also be used together!
 ```
 
-### Sample Run:
+## Sample Run:
+### Normal Mode
+```bash
+E:\lambda> python .\Lambda.py
+LAMBDA> ((((lambda f (lambda x ((f x) f))) (lambda y (lambda g (g (* y y))))) 2) (lambda a a));
+ANSWER>> 16.0
+LAMBDA> exit;
+```
+
+### Steps Mode 
 ```bash
 E:\lambda> python .\Lambda.py -steps
 LAMBDA> ((((lambda f (lambda x ((f x) f))) (lambda y (lambda g (g (* y y))))) 2) (lambda a a));
@@ -27,6 +36,11 @@ BETA> (* (* 2.0 2.0) (* 2.0 2.0))
 BETA> 16.0
 ANSWER>> 16.0
 LAMBDA> exit;
+```
+
+
+### AST Mode
+```bash
 E:\lambda> python .\Lambda.py -tree
 LAMBDA> ((lambda x (* x x)) 4);
 ANSWER>> {  
